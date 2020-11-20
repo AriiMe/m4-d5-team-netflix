@@ -14,9 +14,10 @@ class carousel extends React.Component {
             </Carousel>;
         }
     }
+}
 
-    carousel.propTypes = { movies: propTypes.Array.required, title: propTypes.string.required };
-    carousel.defaultProps = defaultProps;
-    // #endregion
+carousel.propTypes = { movies: propTypes.Array.required, title: propTypes.string.required };
+carousel.defaultProps = defaultProps;
+// #endregion
 
-    export default carousel;
+export default carousel;
