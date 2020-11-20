@@ -1,6 +1,7 @@
 import React from "react";
 import { Navbar, NavDropdown, Image, Nav, Button } from "react-bootstrap";
-
+import { AiOutlineSearch } from "react-icons/ai";
+import { RiNotification4Line } from "react-icons/ri";
 class CustomNavBar extends React.Component {
   render() {
     return (
@@ -42,10 +43,7 @@ class CustomNavBar extends React.Component {
             </Nav.Link>
           </Nav>
           <Nav.Link href="#">
-            <Image
-              src="img/magnifying-glass.svg"
-              style={{ width: "20", height: "20", marginRight: "10px" }}
-            />
+            <AiOutlineSearch />
           </Nav.Link>
           <Nav.Link
             className="nav-link"
@@ -58,14 +56,7 @@ class CustomNavBar extends React.Component {
             KIDS
           </Nav.Link>
           <Nav.Link href="#">
-            <img
-              src="img/notification.svg"
-              style={{
-                width: "20px",
-                height: "20px",
-                marginRight: "10px",
-              }}
-            />
+            <RiNotification4Line />
           </Nav.Link>
           <Nav.Item className="nav-item dropdown form-inline my-2 my-lg-0">
             <Nav.Link
