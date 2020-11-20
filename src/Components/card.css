@@ -10,3 +10,32 @@
 .details .title {
   font-size: 15px;
 }
+.title {
+  display: flex;
+}
+select {
+  height: 28px;
+  padding: 0;
+  margin-left: 30px;
+  background-color: #2c2c2c;
+  border: 1px solid #fff;
+  color: #fff;
+  border-radius: 2px;
+}
+.img-fluid {
+  height: 130px;
+  transition: all ease 0.15s;
+}
+div.mx-auto:hover .details,
+.details:hover,
+div.mx-auto:hover .img-fluid {
+  transition: all ease 0.15s;
+  transform: scale(1.2);
+  display: block;
+}
+
+div.mx-auto:hover {
+  display: flex;
+  flex-direction: column;
+  max-width: 200px;
+}
