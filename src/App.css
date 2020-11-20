@@ -49,7 +49,6 @@ section {
     box-shadow: 0px 0px 8px 3px rgba(255, 9, 9, 0.233);
 }
 
-<<<<<<< HEAD
 .results {
 	display: flex;
 	flex-wrap: wrap;
@@ -157,9 +156,7 @@ section {
 }
 .popup .content .close:hover{
     background: #C30811;
-=======
 .gradientOnJumbo{
     background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,0,0,1) 24%, rgba(255,255,255,0) 51%, rgba(0,0,0,0.8827906162464986) 96%);
     z-index: 5;
->>>>>>> a9b522fd98efa65051d57a5bfce09b5e8e943426
 }
