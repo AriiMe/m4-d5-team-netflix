@@ -1,0 +1,12 @@
+.details {
+  background: linear-gradient(to bottom, #2c2c2c6c, #2c2c2c);
+  position: relative;
+  font-size: 12px;
+  height: 30%;
+  bottom: 30%;
+  padding-bottom: 0;
+  display: none;
+}
+.details .title {
+  font-size: 15px;
+}
