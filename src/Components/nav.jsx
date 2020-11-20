@@ -6,9 +6,9 @@ class CustomNavBar extends React.Component {
     return (
       <Navbar className=" navbar-expand-lg navbar-dark mb-5" id="nav">
         <Navbar.Brand href="#">
-          <img
+          <Image
             style={{ height: "40px" }}
-            src="https://fontmeme.com/permalink/201113/a359d4e325be5f6686e9d92e196149c7.png"
+            src="https://fontmeme.com/permalink/201120/065882ffbeb9ad7f7d80e14d53c921f0.png"
             alt="Netflix"
           />
         </Navbar.Brand>
@@ -25,26 +25,21 @@ class CustomNavBar extends React.Component {
         </Button>
         <Navbar.Collapse className="" id="navbarSupportedContent">
           <Nav className="mr-auto">
-            <Nav.Item className=" active">
-              <Nav.Link className="nav-link" href="#">
-                Tv Shows<span className="sr-only">(current)</span>
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item className="">
-              <Nav.Link className="" href="#">
-                Movies
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item className="">
-              <Nav.Link className="" href="#">
-                Recently Added
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item className="">
-              <Nav.Link className="" href="#">
-                My List
-              </Nav.Link>
-            </Nav.Item>
+            <Nav.Link className="" href="/">
+              Home
+            </Nav.Link>
+            <Nav.Link active className="" href="/">
+              TV Shows
+            </Nav.Link>
+            <Nav.Link className="" href="/">
+              Movies
+            </Nav.Link>
+            <Nav.Link className="" href="/">
+              Recently Added
+            </Nav.Link>
+            <Nav.Link className="" href="/">
+              My List
+            </Nav.Link>
           </Nav>
           <Nav.Link href="#">
             <Image
