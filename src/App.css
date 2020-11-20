@@ -19,6 +19,11 @@ header h1 {
     text-align: center;
 }
 
+body {
+    background-color: #141414;
+
+}
+
 main {
     width: 100%;
     max-width: 960px;
@@ -27,6 +32,11 @@ main {
 
 section {
     padding: 15px;
+}
+
+#nav {
+    background-color: black;
+
 }
 
 .searchbox {
