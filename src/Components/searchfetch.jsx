@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
-import "./App.css";
-import Searchmf from "./Components/Searchmf"
+import "../App.css";
+import Searchmf from "./Searchmf"
 import axios from 'axios'
-import Result from './Components/Result'
-import Results from './Components/Results'
-import Popup from './Components/Popup'
+import Result from './Result'
+import Results from './Results'
+import Popup from './Popup'
 
 function Searchfetch() {
   const[state, setState] = useState({
