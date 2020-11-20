@@ -1,29 +1,16 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
-import { AiFillFacebook } from "react-icons/ai";
-import { AiFillInstagram } from "react-icons/ai";
-import { AiOutlineTwitter } from "react-icons/ai";
-import { AiFillYoutube } from "react-icons/ai";
 
 const Footer = () => (
   <footer>
     <Row className="text-center mt-5">
-      <Col xs={{ span: 5, offset: 3 }}>
+      <Col xs={{ span: 6, offset: 3 }}>
         <Row>
-          <Col xs={12} className="text-left ">
-            <AiFillFacebook
-              size={22}
-              style={{ marginRight: "5px", color: " #8a8a8a" }}
-            />
-            <AiFillInstagram
-              size={23}
-              style={{ marginRight: "5px", color: " #8a8a8a" }}
-            />
-            <AiOutlineTwitter
-              size={25}
-              style={{ marginRight: "5px", color: " #8a8a8a" }}
-            />
-            <AiFillYoutube size={24} style={{ color: " #8a8a8a" }} />
+          <Col xs={12} className="text-left mb-2">
+            <i className="fa fa-facebook footer-icon"></i>
+            <i className="fa fa-instagram footer-icon"></i>
+            <i className="fa fa-twitter footer-icon"></i>
+            <i className="fa fa-youtube footer-icon"></i>
           </Col>
         </Row>
         <Row className="row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-4">
@@ -129,7 +116,7 @@ const Footer = () => (
         </Row>
         <Row>
           <Col xs={12} className="text-left mb-2 mt-2 copyright">
-            © 1969-2420 Blyatflix
+            © 1997-2020 Netflix, Inc.
           </Col>
         </Row>
       </Col>
