@@ -9,10 +9,10 @@ class CardsItem extends React.Component {
 
     render() {
 
-        const { movie } = props;
+        const { movie, onClick } = this.props;
         return (
 
-            <div class="col-sm-12 col-md-6 col-lg-2 mx-auto text-center">
+            <div class="col-sm-12 col-md-6 col-lg-2 mx-auto text-center" onClick={onClick}>
                 <Image src={movie.imageUrl} fluid />
                 <div class="details text-left col-sm-12">
                     <p class="title m-0">{movie.name}</p>
@@ -25,8 +25,8 @@ class CardsItem extends React.Component {
     }
 }
 
-CardsItem.propTypes = { movies: propTypes.Object.required, onClick: propTypes.func.required };
-CardsItem.defaultProps = defaultProps;
+//CardsItem.propTypes = { movie: propTypes.Object, onClick: propTypes.func };
+
 
 
 export default CardsItem;

@@ -1,17 +1,14 @@
 import "./App.css";
-import Searchmf from "./Components/Searchmf";
-import Nav from "./Components/Nav";
-import Jumbo from "./Components/Jumbo";
+//import Searchmf from "./Components/searchmf";
+//import Nav from "./Components/nav";
+//import Jumbo from "./Components/Jumbo";
 import Main from "./Components/Main";
-import Footer from "./Components/Footer";
+//import Footer from "./Components/footer";
 
 function App() {
   return (
     <div className='App'>
-      <Nav />
-      <Jumbo />
       <Main />
-      <Footer />
     </div>
   );
 }

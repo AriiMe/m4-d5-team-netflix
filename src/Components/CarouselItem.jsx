@@ -2,13 +2,47 @@ import React from 'react';
 import { propTypes } from 'react-bootstrap/esm/Image';
 import { Carousel } from 'react-bootstrap';
 import CardItem from './CardsItem';
+import PropTypes from 'prop-types';
+
 
 class carouselItem extends React.Component {
     state = {
+        movies: [],
         index: 0,
+        loading: false,
     }
+    url = "http://www.omdbapi.com/?apikey=ff133ca5&s="
+    componentDidMount = () => {
+        const { title } = this.props
+        this.fetchMovies(title);
+    }
+    fetchMovies = async (title) => {
+        //this.setState({ loading: true })
+        try {
+            let response = await fetch(this.url + title);
 
+            if (response.ok) {
+                let movies_list = await response.json();
+                let movies = [[...this.state.movie], [movies_list.Search]].flat();
+                this.setState({
+                    loading: true,
+                    movies: movies,
+                })
+                console.log(this.state)
+            }
+        } catch (e) {
+            console.log("error happened, that's life", e)
+            this.setState({ loading: false })
+        }
+    }
+    renderSlides = () => {
+        if (this.state.loading === true) {
+            const { movies } = this.state;
+            return (movies && movies.map((movie) => this.carouselSlides(movie)))
+        }
+    }
     carouselSlides = (movies) => {
+        console.log(movies)
         for (let j = 0; j < movies.length / 6; j++) {
             let carousel_item
             for (let i = 0; i < 6; i++) {
@@ -16,10 +50,11 @@ class carouselItem extends React.Component {
                 carousel_item += this.carouselItem(movie);
             }
         }
-        return (carousel_item);
+        return (this.carousel_item);
     }
 
     carouselItem = (movies) => {
+        console.log(movies)
         movies.map((movie) => { <CardItem movie={movie}></CardItem> });
     }
 
@@ -28,11 +63,12 @@ class carouselItem extends React.Component {
         this.setState({ index: selectedIndex });
     };
     render() {
-        const { movies, title } = props;
-        const [index] = this.state;
+        const { title } = this.props;
+        const { index, movies } = this.state;
+        console.log(movies)
         return (
             <>
-                <h4 style="color: white">{title}</h4>
+                <h4>{title}</h4>
                 <Carousel activeIndex={index} onSelect={this.handleSelect}>
                     {this.carouselSlides(movies)}
                 </Carousel>;
@@ -41,8 +77,8 @@ class carouselItem extends React.Component {
     }
 }
 
-carouselItem.propTypes = { movies: propTypes.Array.required, title: propTypes.string.required };
-carouselItem.defaultProps = defaultProps;
+carouselItem.propTypes = { title: propTypes.string };
+
 
 
 export default carouselItem;
