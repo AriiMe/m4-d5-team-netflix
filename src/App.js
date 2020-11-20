@@ -13,6 +13,7 @@ function App() {
       <Nav />
       <Jumbo />
       <Main />
+      <Footer />
     </div>
   );
 }

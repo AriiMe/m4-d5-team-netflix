@@ -32,12 +32,9 @@ section {
 .searchbox {
     display: block;
     width: 100%;
-    padding: 15px;
-
+    height: 35px;
     border: none;
     outline: none;
-    background: none;
-
     background-color: #ffffff;
     border-radius: 10px;
     color: grey;
@@ -47,7 +44,8 @@ section {
 }
 
 .searchbox:focus {
-    box-shadow: 0px 0px 8px 3px rgba(255, 9, 9, 0.233);
+    box-shadow: 0px 0px 6px 1px rgba(255, 9, 9, 0.233);
+
 }
 
 .results {

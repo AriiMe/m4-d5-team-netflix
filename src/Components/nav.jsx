@@ -1,4 +1,5 @@
 import React from "react";
+import Searchmf from "./Searchmf";
 import { Navbar, NavDropdown, Image, Nav, Button } from "react-bootstrap";
 import { AiOutlineSearch } from "react-icons/ai";
 import { RiNotification4Line } from "react-icons/ri";
@@ -43,7 +44,7 @@ class CustomNavBar extends React.Component {
             </Nav.Link>
           </Nav>
           <Nav.Link href="#">
-            <AiOutlineSearch />
+            <Searchmf />
           </Nav.Link>
           <Nav.Link
             className="nav-link"
