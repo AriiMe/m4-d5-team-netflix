@@ -6,7 +6,7 @@ import { RiNotification4Line } from "react-icons/ri";
 class CustomNavBar extends React.Component {
   render() {
     return (
-      <Navbar className=" navbar-expand-lg navbar-dark mb-5" id="nav">
+      <Navbar className=" navbar-expand-lg navbar-dark mb-0" id="nav">
         <Navbar.Brand href="#">
           <Image
             style={{ height: "40px" }}
