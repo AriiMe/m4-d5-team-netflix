@@ -1,5 +1,5 @@
 import React from 'react'
-import Comments from './comments'
+import Comments from './Comments'
 import { Container, Row, Col, } from "react-bootstrap"
 function Popup({ selected, closePopup }) {
     return (

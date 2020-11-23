@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CarouselItem from './CarouselItem';
-import Comments from './comments';
+import Comments from './Comments';
 import { Container } from 'react-bootstrap';
 import Searchfetch from "./searchfetch";
 
