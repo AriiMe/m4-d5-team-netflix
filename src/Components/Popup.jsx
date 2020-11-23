@@ -2,10 +2,11 @@ import React from 'react'
 import Comments from './comments'
 import { Container, Row, Col, } from "react-bootstrap"
 function Popup({ selected, closePopup }) {
-    return (<>
+    return (
         <section className="popup">
             <div className="content">
                 <h2>{selected.Title} <span>({selected.Year})</span></h2>
+
                 <p className="rating">Rating: {selected.imdbRating}</p>
                 <div className="plot">
                     <img src={selected.Poster} />
@@ -20,13 +21,16 @@ function Popup({ selected, closePopup }) {
                             <Comments />
                         </Col>
                     </Row>
+                    <Row>
+                        <Col>
+                            <Comments />
+                        </Col>
+                    </Row>
                 </Container>
             </div>
         </section>
-
-
-    </>
     )
+
 }
 
 export default Popup
