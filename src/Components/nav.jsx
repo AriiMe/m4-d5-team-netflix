@@ -1,5 +1,5 @@
 import React from "react";
-import Searchmf from "./Searchmf";
+import Searchmf from "./searchmf";
 import { Navbar, NavDropdown, Image, Nav, Button } from "react-bootstrap";
 
 

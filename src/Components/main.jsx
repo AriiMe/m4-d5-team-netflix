@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CarouselItem from './CarouselItem';
-import Comments from './Comments';
+import Comments from './comments';
 import { Container } from 'react-bootstrap';
-import Searchfetch from "./Searchfetch";
+import Searchfetch from "./searchfetch";
 
 class Main extends React.Component {
     state = {

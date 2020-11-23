@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import "../App.css";
-import Searchmf from "./Searchmf"
+import Searchmf from "./searchmf"
 import axios from 'axios'
 import Result from './Result'
 import Results from './Results'
