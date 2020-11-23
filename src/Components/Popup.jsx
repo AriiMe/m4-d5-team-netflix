@@ -7,6 +7,7 @@ function Popup({ selected, closePopup }) {
             <div className="content">
                 <h2>{selected.Title} <span>({selected.Year})</span></h2>
 
+
                 <p className="rating">Rating: {selected.imdbRating}</p>
                 <div className="plot">
                     <img src={selected.Poster} />
@@ -16,6 +17,11 @@ function Popup({ selected, closePopup }) {
             </div>
             <div className="comments container">
                 <Container>
+                    <Row>
+                        <Col>
+                            <Comments />
+                        </Col>
+                    </Row>
                     <Row>
                         <Col>
                             <Comments />

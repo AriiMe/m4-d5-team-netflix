@@ -12,7 +12,6 @@ header {
   padding: 50px 15px 0px;
 }
 
-
 header h1 {
   color: #fff;
   font-size: 48px;
@@ -21,8 +20,11 @@ header h1 {
 }
 
 body {
-    background-color: #141414;
+  background-color: #141414;
+}
 
+body {
+  background-color: #141414;
 }
 
 main {
@@ -35,31 +37,31 @@ section {
   padding: 15px;
 }
 
-<<<<<<< HEAD
 .gradientOnJumbo {
   background-image: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(0, 0, 0, 1) 24%, rgba(255, 255, 255, 0) 51%, rgba(0, 0, 0, 0.8827906162464986) 96%);
   z-index: 5;
-=======
+}
 #nav {
-    background-color: black;
+  background-color: black;
+}
 
+#nav {
+  background-color: black;
 }
 
 .searchbox {
-    display: block;
-    width: 100%;
-    height: 35px;
-    border: none;
-    outline: none;
-    background-color: #ffffff;
-    border-radius: 10px;
-    color: grey;
-    font-size: 15px;
-    font-weight: 300px;
-    transition: 0.4 ease-out;
->>>>>>> bf110fe8ea78a0df16b4d3c684d3dccaeb458354
+  display: block;
+  width: 100%;
+  height: 35px;
+  border: none;
+  outline: none;
+  background-color: #ffffff;
+  border-radius: 10px;
+  color: grey;
+  font-size: 15px;
+  font-weight: 300px;
+  transition: 0.4 ease-out;
 }
-
 .footer-icon {
   font-size: 1.3em;
   margin-left: 1%;
@@ -265,7 +267,6 @@ footer {
   color: #223343;
 }
 .popup {
-<<<<<<< HEAD
   position: fixed;
   top: 0;
   left: 0;
@@ -274,17 +275,16 @@ footer {
   background-color: #141414;
 
   overflow: scroll;
-=======
-    z-index: 1000;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #141414;
 
-    overflow: scroll;
->>>>>>> bf110fe8ea78a0df16b4d3c684d3dccaeb458354
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #141414;
+
+  overflow: scroll;
 }
 
 .popup .content {

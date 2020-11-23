@@ -1,12 +1,21 @@
+<<<<<<< HEAD
 
 import React, { useState } from 'react'
 import "../App.css";
 import Searchmf from "./searchmf"
+=======
+import React, {useState} from 'react'
+import "../App.css";
+import Searchmf from "./Searchmf"
+>>>>>>> bf110fe8ea78a0df16b4d3c684d3dccaeb458354
 import axios from 'axios'
 import Result from './Result'
 import Results from './Results'
 import Popup from './Popup'
+<<<<<<< HEAD
 import './card.css'
+=======
+>>>>>>> bf110fe8ea78a0df16b4d3c684d3dccaeb458354
 
 function Searchfetch() {
   const [state, setState] = useState({

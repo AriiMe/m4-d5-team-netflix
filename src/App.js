@@ -21,7 +21,11 @@ function App() {
       <NavBar />
       <Jumbo />
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+      <Searchfetch />
+>>>>>>> bf110fe8ea78a0df16b4d3c684d3dccaeb458354
 =======
       <Searchfetch />
 >>>>>>> bf110fe8ea78a0df16b4d3c684d3dccaeb458354
