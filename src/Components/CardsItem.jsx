@@ -8,17 +8,15 @@ import './card.css'
 class CardsItem extends React.Component {
 
     render() {
-
-        const { movie, onClick } = this.props;
-        console.log(movie)
+        const { movie, history } = this.props;
         return (
 
-            <div class="col-sm-12 col-md-6 col-lg-2 mx-auto text-center" onClick={onClick}>
+            <div key={movie.imdbID} className="col-sm-12 col-md-6 col-lg-2 p-1 text-center" style={{ height: '400px' }} onClick={() => this.props.history.push('/details/' + movie.imdbID)}>
                 <Image src={movie.Poster} className=".img-fluid" fluid />
-                <div class="details text-left col-sm-12">
-                    <p class="title m-0">{movie.Title}</p>
-                    <p class="text-muted m-0">{movie.Type}</p>
-                    <p class="text-truncate m-0 ">{movie.Year}</p>
+                <div className="details text-left col-sm-12">
+                    <p className="title m-0">{movie.Title}</p>
+                    <p className="text-muted m-0">{movie.Type}</p>
+                    <p className="text-truncate m-0 ">{movie.Year}</p>
                 </div>
             </div>
 
@@ -26,7 +24,7 @@ class CardsItem extends React.Component {
     }
 }
 
-CardsItem.propTypes = { movie: propTypes.Object };
+CardsItem.propTypes = { movie: propTypes.Object, history: PropTypes.string };
 
 
 

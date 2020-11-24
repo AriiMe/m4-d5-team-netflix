@@ -1,22 +1,22 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import Searchmf from "./Components/searchmf";
-import Searchfetch from "./Components/searchfetch";
+import ShowDetail from "./Components/ShowDetail";
 import Nav from "./Components/nav";
-import Jumbo from "./Components/jumbo";
 import Main from "./Components/main";
 import Footer from "./Components/footer";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className='App'>
-      <Nav />
-      <Jumbo />
-      <Searchfetch />
-      <Main />
+      <Router>
+        <Nav />
 
-      <Footer />
+        <Route path='/' exact component={Main} />
+        <Route path='/details/:id' component={ShowDetail} />
+        <Footer />
+      </Router>
     </div>
   );
 }

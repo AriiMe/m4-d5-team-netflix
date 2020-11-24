@@ -12,14 +12,16 @@ class carouselItem extends React.Component {
         loading: false,
     }
     url = "http://www.omdbapi.com/?apikey=ff133ca5&s="
+    pages = ['1', '2', '3']
 
-    componentWillMount = () => {
+    componentDidMount = () => {
         const { Title } = this.props
-        this.fetchMovies(Title);
+        this.pages.forEach(page => this.fetchMovies(Title, page));
     }
-    fetchMovies = async (Title) => {
+
+    fetchMovies = async (Title, page) => {
         try {
-            let response = await fetch(this.url + Title);
+            let response = await fetch(this.url + Title + "&page" + page);
 
             if (response.ok) {
                 let movies_list = await response.json();
@@ -46,28 +48,46 @@ class carouselItem extends React.Component {
     }
 
     render() {
-        const { Title } = this.props;
+        const { Title, history } = this.props;
         const { index, movies } = this.state;
+        console.log(movies)
         return (
             <>
                 <h4>{Title}</h4>
-                <Carousel activeIndex={index} onSelect={this.handleSelect}>
+                <Carousel activeIndex={index} onSelect={this.handleSelect} indicators={false}>
                     {this.renderSlides()}
-                    {movies.map((movie) =>
-                        <Carousel.Item>
-                            <Row>
-                                {movie.map((single_movie, i) =>
-                                    (i < 6) && <CardItem movie={single_movie}></CardItem>)
-                                }
-                            </Row>
-                        </Carousel.Item>)}
+                    < Carousel.Item >
+                        <Row>
+                            {movies.flat().map((single_movie, i) =>
+                                (i < 6) && <CardItem movie={single_movie} history={history} ></CardItem>)
+                            }
+                        </Row>
+
+                    </Carousel.Item>
+                    < Carousel.Item >
+                        <Row>
+                            {movies.flat().map((single_movie, i) =>
+                                (i > 6 && i < 13) && <CardItem movie={single_movie} history={history} ></CardItem>)
+                            }
+                        </Row>
+
+                    </Carousel.Item>
+                    < Carousel.Item >
+                        <Row>
+                            {movies.flat().map((single_movie, i) =>
+                                (i > 12 && i < 19) && <CardItem movie={single_movie} history={history} ></CardItem>)
+                            }
+                        </Row>
+
+                    </Carousel.Item>
+
                 </Carousel>
             </>
         )
     }
 }
 
-carouselItem.propTypes = { Title: propTypes.string };
+carouselItem.propTypes = { Title: propTypes.string, history: PropTypes.string };
 
 
 

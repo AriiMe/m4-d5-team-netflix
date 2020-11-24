@@ -6,7 +6,7 @@ function Searchmf({ handleInput, search }) {
       <input
         type="text"
         placeholder="Search for a movies..."
-        className="searchbox"
+        className="searchbox w-25 pl-2"
         onChange={handleInput}
         onKeyPress={search}
       />

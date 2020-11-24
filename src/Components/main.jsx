@@ -4,6 +4,7 @@ import CarouselItem from './CarouselItem';
 import Comments from './Comments';
 import { Container } from 'react-bootstrap';
 import Searchfetch from "./searchfetch";
+import Jumbo from "./jumbo";
 
 class Main extends React.Component {
     state = {
@@ -15,11 +16,12 @@ class Main extends React.Component {
     render() {
 
         const { movie } = this.state;
-        console.log(movie)
-        return <Container>
+        const { history } = this.props;
+        return <>
+            <Jumbo />
             <Searchfetch />
-            < CarouselItem Title={this.movie_keys[0]} ></CarouselItem >
-        </Container>
+            {this.movie_keys.map((movie) => <CarouselItem Title={movie} history={history} ></CarouselItem>)}
+        </>
     }
 }
 
