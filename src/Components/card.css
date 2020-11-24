@@ -37,10 +37,12 @@ select {
   position: relative;
   transform: scale(1.2);
   z-index: +10;
+  cursor: pointer;
 }
 .img-fluid:hover ~ .details {
   opacity: 1;
   z-index: +11;
+  bottom: 10%;
 }
 
 div.mx-auto:hover {

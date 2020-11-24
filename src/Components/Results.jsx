@@ -1,11 +1,12 @@
 import React from 'react'
-import Result from './Result'
+import MovieItem from './MovieItem'
 
-function Results ({ results, openPopup }) {
+function Results({ results, openPopup }) {
+	console.log(results)
 	return (
-		<section className="results">
-			{results.map(result => (
-				<Result key={result.imdbID} result={result} openPopup={openPopup} />
+		<section className="results justify-content-center" >
+			{results.map(movie => (
+				<MovieItem key={movie.imdbID} movie={movie} openPopup={openPopup} addclass='m-2' />
 			))}
 		</section>
 	)

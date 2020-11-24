@@ -5,14 +5,15 @@ import { propTypes } from 'react-bootstrap/esm/Image';
 import './card.css'
 
 
-class CardsItem extends React.Component {
+class MovieItem extends React.Component {
 
     render() {
-        const { movie, history } = this.props;
-        console.log(movie)
+        const { movie, history, addclass } = this.props;
+        const addclasses = ("col-sm-12 col-md-6 col-lg-2 p-1 text-center ").concat(addclass);
+        console.log(addclasses)
         return (
 
-            <div key={movie.imdbID} className="col-sm-12 col-md-6 col-lg-2 p-1 text-center" style={{ height: '400px' }} onClick={() => this.props.history.push('/details/' + movie.imdbID)}>
+            <div key={movie.imdbID} className={addclasses} style={{ height: '400px' }} onClick={() => this.props.history.push('/details/' + movie.imdbID)}>
                 <Image src={movie.Poster} className=".img-fluid" fluid />
                 <div className="details text-left col-sm-12">
                     <p className="title text-nowrap m-0">{movie.Title}</p>
@@ -25,8 +26,8 @@ class CardsItem extends React.Component {
     }
 }
 
-CardsItem.propTypes = { movie: propTypes.Object, history: PropTypes.string };
+MovieItem.propTypes = { movie: propTypes.Object, history: PropTypes.string };
 
 
 
-export default CardsItem;
+export default MovieItem;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { propTypes } from 'react-bootstrap/esm/Image';
 import { Carousel, Row } from 'react-bootstrap';
-import CardItem from './CardsItem';
+import CardItem from './MovieItem';
 import PropTypes from 'prop-types';
 
 
@@ -50,7 +50,6 @@ class carouselItem extends React.Component {
     render() {
         const { Title, history } = this.props;
         const { index, movies } = this.state;
-        console.log(movies)
         return (
             <>
                 <h4 className="text-white ml-5 mt-3 font-weight-bolder">{Title}</h4>
@@ -87,7 +86,7 @@ class carouselItem extends React.Component {
     }
 }
 
-carouselItem.propTypes = { Title: propTypes.string, history: PropTypes.string };
+carouselItem.propTypes = { Title: propTypes.string, history: PropTypes.object };
 
 
 

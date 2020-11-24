@@ -1,12 +1,12 @@
 import React from "react";
 
-function Searchmf({ handleInput, search }) {
+function SearchInput({ handleInput, search }) {
   return (
 
     <input
-      type="text"
+      type="search"
       placeholder="Search for a movies..."
-      className="searchbox pl-2"
+      className="form-control searchbox pl-2"
       onChange={handleInput}
       onKeyPress={search}
     />
@@ -14,4 +14,4 @@ function Searchmf({ handleInput, search }) {
   );
 }
 
-export default Searchmf;
+export default SearchInput;
