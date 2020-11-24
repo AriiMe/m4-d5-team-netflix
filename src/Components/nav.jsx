@@ -3,8 +3,10 @@ import { Navbar, NavDropdown, Image, Nav, Button } from "react-bootstrap";
 import { Link, withRouter } from 'react-router-dom'
 
 
+
 const NavBar = (props) => {
 
+  const { location } = props;
   return (
     <Navbar className=" navbar-expand-lg navbar-dark mb-0" id="nav">
       <Link to="/">
@@ -28,30 +30,31 @@ const NavBar = (props) => {
         <span className="navbar-toggler-icon"></span>
       </Button>
       <Navbar.Collapse className="" id="navbarSupportedContent">
-        <Nav className="mr-auto text-decoration-none">
-          <Link to="/">
-            <div className={props.location.pathname === '/' ? 'nav-link active' : 'nav-link'}>Home</div>
+        <Nav className="mr-auto">
+          <Link to="/" className="text-decoration-none">
+            <div className={location.pathname === '/' ? 'nav-link active' : 'nav-link'}>Home</div>
           </Link>
-          <Link to="/shows">
-            <div className={props.location.pathname === '/shows' ? 'nav-link active' : 'nav-link'}>TV Shows</div>
+          <Link to="/shows" className="text-decoration-none">
+            <div className={location.pathname === '/shows' ? 'nav-link active' : 'nav-link'}>TV Shows</div>
           </Link>
-          <Link to="/movies">
-            <div className={props.location.pathname === '/movies' ? 'nav-link active' : 'nav-link'}>Movies</div>
+          <Link to="/movies" className="text-decoration-none">
+            <div className={location.pathname === '/movies' ? 'nav-link active' : 'nav-link'}>Movies</div>
           </Link>
-          <Link to="/new">
-            <div className={props.location.pathname === '/new' ? 'nav-link active' : 'nav-link'}>Recently Added</div>
+          <Link to="/new" className="text-decoration-none">
+            <div className={location.pathname === '/new' ? 'nav-link active' : 'nav-link'}>Recently Added</div>
           </Link>
-          <Link to="/myList">
-            <div className={props.location.pathname === '/myList' ? 'nav-link active' : 'nav-link'}>My List</div>
+          <Link to="/myList" className="text-decoration-none">
+            <div className={location.pathname === '/myList' ? 'nav-link active' : 'nav-link'}>My List</div>
           </Link>
         </Nav>
+
         <Nav>
           <Link to="/kids">
             <div style={{
               color: "rgba(255, 255, 255, 0.952font-weight: 400",
               fontWeight: "400",
             }}
-              className={props.location.pathname === '/kids' ? 'nav-link active' : 'nav-link'}>KIDS</div>
+              className={location.pathname === '/kids' ? 'nav-link active' : 'nav-link'}>KIDS</div>
           </Link>
 
           <Nav.Item className="nav-item dropdown form-inline my-2 my-lg-0">

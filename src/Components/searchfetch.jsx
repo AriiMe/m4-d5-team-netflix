@@ -1,7 +1,6 @@
 
 import React, { useState } from 'react'
 import "../App.css";
-import Searchmf from "./searchmf"
 import axios from 'axios'
 import Result from './Result'
 import Results from './Results'
@@ -64,12 +63,12 @@ function Searchfetch() {
   return (
     <div className="App">
 
-      <>
-        <Searchmf handleInput={handleInput} search={search} />
-        {state.loading ? "loading..." : <Results results={state.results} openPopup={openPopup} />}
 
-        {(typeof state.selected.Title !== "undefined") && <Popup selected={state.selected} closePopup={closePopup} />}
-      </>
+
+      {state.loading ? "loading..." : <Results results={state.results} openPopup={openPopup} />}
+
+      {(typeof state.selected.Title !== "undefined") && <Popup selected={state.selected} closePopup={closePopup} />}
+
     </div>
   );
 }

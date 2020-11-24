@@ -53,7 +53,7 @@ class carouselItem extends React.Component {
         console.log(movies)
         return (
             <>
-                <h4>{Title}</h4>
+                <h4 className="text-white ml-5 mt-3 font-weight-bolder">{Title}</h4>
                 <Carousel activeIndex={index} onSelect={this.handleSelect} indicators={false}>
                     {this.renderSlides()}
                     < Carousel.Item >

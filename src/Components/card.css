@@ -1,15 +1,17 @@
 .details {
-  background: linear-gradient(to bottom, #2c2c2c6c, #2c2c2c);
+  background: linear-gradient(to bottom, #2c2c2c00, #161616 90%);
   position: relative;
   font-size: 12px;
-  height: 30%;
-  bottom: 30%;
+  height: 20%;
+  bottom: 20%;
   width: 100%;
   padding-bottom: 0;
   opacity: 0;
 }
 .details .title {
   font-size: 15px;
+  font-weight: 800;
+  color: #fff;
 }
 .title {
   display: flex;

@@ -1,10 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import CarouselItem from './CarouselItem';
-import Comments from './Comments';
 import { Container } from 'react-bootstrap';
 import Searchfetch from "./searchfetch";
 import Jumbo from "./jumbo";
+import Searchmf from "./searchmf"
 
 class Main extends React.Component {
     state = {
@@ -16,8 +15,9 @@ class Main extends React.Component {
     render() {
 
         const { movie } = this.state;
-        const { history } = this.props;
+        const { history, handleInput, search } = this.props;
         return <>
+            <Searchmf handleInput={handleInput} search={search} />
             <Jumbo />
             <Searchfetch />
             {this.movie_keys.map((movie) => <CarouselItem Title={movie} history={history} ></CarouselItem>)}

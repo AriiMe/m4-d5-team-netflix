@@ -12,7 +12,6 @@ function App() {
     <div className='App'>
       <Router>
         <Nav />
-
         <Route path='/' exact component={Main} />
         <Route path='/details/:id' component={ShowDetail} />
         <Footer />
