@@ -1,6 +1,6 @@
 import React from 'react';
 import CarouselItem from './CarouselItem';
-import { Container, Spinner } from 'react-bootstrap';
+import { Container, Spinner, Row } from 'react-bootstrap';
 import Jumbo from "./jumbo";
 import SearchInput from "./SearchInput"
 import Results from "./Results"
@@ -8,14 +8,15 @@ import Results from "./Results"
 class Main extends React.Component {
     state = {
         movies: [],
-        loading: false,
+        searching: false,
+        loading: true,
         search: "",
     }
     handleInput = (e) => {
         let search = e.target.value;
-        this.setState({ loading: false })
+        this.setState({ searching: false })
         this.setState(prevState => {
-            return { ...prevState, search, loading: false }
+            return { ...prevState, search, searching: false }
         });
     }
     url = "http://www.omdbapi.com/?apikey=ff133ca5&s=";
@@ -24,35 +25,43 @@ class Main extends React.Component {
         if (e.key === "Enter") this.fetchMovies(this.state.search)
     };
     fetchMovies = async (Title) => {
+        this.setState({ searching: true })
         try {
             let response = await fetch(this.url + Title);
             if (response.ok) {
                 let movies = await response.json();
-                this.setState({
-                    loading: true,
-                    movies: movies.Search,
-                })
-                console.log(this.state)
+                setTimeout(() => {
+                    this.setState({
+                        movies: movies.Search,
+                        loading: false,
+                    })
+                }, 1000);
             }
         } catch (e) {
             console.log("error happened, that's life", e)
-            this.setState({ loading: false })
+            this.setState({ searching: false })
         }
     }
     movie_keys = ['Avengers', 'Spider-man', 'Batman']
     render() {
 
-        const { movies, loading } = this.state;
+        const { movies, searching, loading } = this.state;
         const { history } = this.props;
         return <>
             <SearchInput handleInput={this.handleInput} search={this.search} />
-            {!loading ? (
+            {!searching ? (
                 <>
                     <Jumbo />
                     {this.movie_keys.map((movie) => <CarouselItem key={movie} Title={movie} history={history} ></CarouselItem>)}
                 </>
             ) : (<Container>
-                <Results results={movies} openPopup={this.openPopup} history={history} />
+                { loading ? <Row className="ml-2 d-flex justify-content-center ">
+                    <Spinner animation="border" variant="light" size="lg" style={{ height: "100px", width: "100px", marginTop: "20vh", marginBottom: "20vh" }}>
+                        <span className="sr-only">Loading...</span>
+                    </Spinner>
+                </Row> :
+                    <Results results={movies} openPopup={this.openPopup} history={history} />
+                }
             </Container>)
             }
 

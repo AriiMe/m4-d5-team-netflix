@@ -6,6 +6,7 @@ import Nav from "./Components/nav";
 import Main from "./Components/main";
 import Footer from "./Components/footer";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import TvShows from "./Components/TvShows";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Nav />
         <Route path='/' exact component={Main} />
         <Route path='/details/:id' component={ShowDetail} />
+        <Route path='/shows' exact render={(props) => <TvShows series={"s={and}&type=series"} {...props} />} />
         <Footer />
       </Router>
     </div>

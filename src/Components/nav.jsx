@@ -1,6 +1,7 @@
 import React from "react";
-import { Navbar, NavDropdown, Image, Nav, Button, Container } from "react-bootstrap";
+import { Navbar, ButtonGroup, Image, Nav, Dropdown, DropdownButton, Button, Container } from "react-bootstrap";
 import { Link, withRouter } from 'react-router-dom'
+import './nav.css'
 
 
 
@@ -8,29 +9,17 @@ const NavBar = (props) => {
 
   const { location } = props;
   return (
-    <Navbar className=" navbar-expand-lg navbar-dark mb-0" id="nav">
+    <Navbar className=" navbar-expand-lg navbar-dark mb-0" expand="lg">
       <Container>
         <Link to="/">
-          <Navbar.Brand href="#">
-            <Image
-              style={{ height: "40px" }}
-              src="https://fontmeme.com/permalink/201120/065882ffbeb9ad7f7d80e14d53c921f0.png"
-              alt="Netflix"
-            />
-          </Navbar.Brand>
+          <Image
+            style={{ height: "35px" }}
+            src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
+            alt="Netflix"
+          />
         </Link>
-        <Button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </Button>
-        <Navbar.Collapse className="" id="navbarSupportedContent">
+        <Navbar.Toggle aria-controls="navbarSupportedContent" />
+        <Navbar.Collapse id="navbarSupportedContent">
           <Nav className="mr-auto">
             <Link to="/" className="text-decoration-none">
               <div className={location.pathname === '/' ? 'nav-link active' : 'nav-link'}>Home</div>
@@ -57,44 +46,22 @@ const NavBar = (props) => {
               }}
                 className={location.pathname === '/kids' ? 'nav-link active' : 'nav-link'}>KIDS</div>
             </Link>
-
-            <Nav.Item className="nav-item dropdown form-inline my-2 my-lg-0">
-              <Nav.Link
-                className="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <Image
-                  src="https://www.rainews.it/dl/img/2019/10/310x0_1570967493149.LP_10474841.jpg"
-                  style={{
-                    width: "40px",
-                    height: "30px",
-                  }}
-                />
-              </Nav.Link>
-              <NavDropdown
-                className="dropdown-menu dropdown-menu-right form-inline my-2 my-lg-0"
-                aria-labelledby="navbarDropdown"
-                title=""
-              >
-                <NavDropdown.Item className="" href="#">
-                  Account
-              </NavDropdown.Item>
-                <NavDropdown.Item className="" href="#">
-                  History
-              </NavDropdown.Item>
-                <NavDropdown.Item className="" href="back.html">
-                  Settings
-              </NavDropdown.Item>
-                <NavDropdown.Item className="dropdown-item" href="#">
-                  Log Out
-              </NavDropdown.Item>
-              </NavDropdown>
-            </Nav.Item>
+            <div>
+              <Dropdown as={ButtonGroup}>
+                <Button variant="btn"> <Image src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/366be133850498.56ba69ac36858.png" width="30" /></Button>
+                <Dropdown.Toggle split variant="btn" id="dropdown-custom-2" />
+                <Dropdown.Menu className="super-colors">
+                  <Dropdown.Item eventKey="1"><Image
+                    src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/366be133850498.56ba69ac36858.png" width="30"
+                    height="30" /> Strive Student</Dropdown.Item>
+                  <Dropdown.Item eventKey="2">Manage Profiles</Dropdown.Item>
+                  <Dropdown.Divider />
+                  <Dropdown.Item eventKey="3">Account</Dropdown.Item>
+                  <Dropdown.Item eventKey="4">Help Center</Dropdown.Item>
+                  <Dropdown.Item eventKey="5">Sign out of Netflix</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -44,7 +44,6 @@ class Comments extends React.Component {
                     loading: false,
                     refreshList: true,
                 })
-                this.componentDidUpdate()
             } else {
                 console.log('an error occurred')
                 let error = await response.json()
@@ -130,28 +129,28 @@ class Comments extends React.Component {
 
                     <div>
 
-                        <Row>
-                            <Col className="m-1">
-                                {this.commentSection()}
-                                {
-                                    this.state.loading && (
-                                        <div className="d-flex justify-content-center my-5">
-                                            Saving comment, please wait
-                                            <div className="ml-2">
-                                                <Spinner animation="border" variant="success" />
-                                            </div>
+
+                        <Col className="m-1">
+                            {this.commentSection()}
+                            {
+                                this.state.loading && (
+                                    <div className="d-flex justify-content-center my-5">
+                                        Saving comment, please wait
+                                        <div className="ml-2">
+                                            <Spinner animation="border" variant="success" />
                                         </div>
-                                    )
-                                }
-                            </Col>
+                                    </div>
+                                )
+                            }
+                        </Col>
 
 
-                            <Col>
-                                <CommentsList id={id} refreshList={this.state.refreshList} />
-                            </Col>
+                        <Col>
+                            <CommentsList id={id} refreshList={this.state.refreshList} />
+                        </Col>
 
 
-                        </Row>
+
                     </div>
                 </div>
             </Container>

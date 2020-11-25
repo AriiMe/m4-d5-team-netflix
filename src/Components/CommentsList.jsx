@@ -86,15 +86,14 @@ class CommentsList extends React.Component {
     reviewItem = (review) => {
         return (
             <ListGroup.Item key={review._id} className="d-flex flex-column justify-content-between p-1 pb-0">
+
                 <div className="d-flex justify-content-between">
                     <small>{review.author}</small>
-                    <div>
-                        <small className="text-muted mr-1"><Moment format="D MMM YYYY - hh:mm" withdate={review.createdAt} /></small>
-                        <Button className="m-0 p-0 px-1 mr-1" variant="outline-danger" id={review._id} onClick={this.deleteComment}> X </Button>
-                    </div>
+                    <Button className="px-2 py-0 mr-1" variant="outline-danger" id={review._id} onClick={this.deleteComment}> X </Button>
                 </div>
-                <div className="d-flex justify-content-between pr-4"><p>{review.comment}</p> <p>{[...Array(parseInt(review.rate))].map((e, i) => (<i className="text-warning font-weight-bold" key={i}>☆</i>))}</p></div>
 
+                <div className="d-flex justify-content-between pr-4"><p>{review.comment}</p> <p>{[...Array(parseInt(review.rate))].map((e, i) => (<i className="text-warning font-weight-bold" key={i}>☆</i>))}</p></div>
+                <small className="text-muted mr-1 d-flex justify-content-between"><Moment format="D MMM YYYY" withdate={review.createdAt} />   <Moment format=" HH:MM " withdate={review.createdAt} /></small>
 
             </ListGroup.Item >)
     }
