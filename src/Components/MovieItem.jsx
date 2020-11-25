@@ -10,11 +10,10 @@ class MovieItem extends React.Component {
     render() {
         const { movie, history, addclass } = this.props;
         const addclasses = ("col-sm-12 col-md-6 col-lg-2 p-1 text-center ").concat(addclass);
-        console.log(addclasses)
         return (
 
             <div key={movie.imdbID} className={addclasses} style={{ height: '400px' }} onClick={() => this.props.history.push('/details/' + movie.imdbID)}>
-                <Image src={movie.Poster} className=".img-fluid" fluid />
+                <Image src={movie.Poster} fluid />
                 <div className="details text-left col-sm-12">
                     <p className="title text-nowrap m-0">{movie.Title}</p>
                     <p className="text-black-50 font-weight-bold m-0">{movie.Type}</p>
@@ -26,7 +25,7 @@ class MovieItem extends React.Component {
     }
 }
 
-MovieItem.propTypes = { movie: propTypes.Object, history: propTypes.Object };
+MovieItem.propTypes = { movie: PropTypes.object, history: PropTypes.object };
 
 
 

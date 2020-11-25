@@ -26,7 +26,7 @@ select {
   border-radius: 2px;
 }
 .img-fluid {
-  width: 300px;
+  width: auto;
   height: inherit;
   transition: all ease 0.15s;
 }
@@ -48,4 +48,25 @@ div.mx-auto:hover {
   display: flex;
   flex-direction: column;
   max-width: 200px;
+}
+
+@media (max-width: 780px) {
+  .mobile {
+    display: none;
+  }
+}
+@media (max-width: 993px) {
+  .tablet {
+    display: none;
+  }
+}
+@media (max-width: 1200px) {
+  .desktop {
+    display: none;
+  }
+  .tablet,
+  .mobile,
+  .undefined {
+    margin: auto;
+  }
 }
