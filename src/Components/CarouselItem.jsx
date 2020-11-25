@@ -16,8 +16,8 @@ class carouselItem extends React.Component {
 
     componentDidMount = () => {
         const { Title } = this.props
+        this.pages.forEach(page => this.fetchMovies(Title, page));
         setTimeout(() => {
-            this.pages.forEach(page => this.fetchMovies(Title, page));
             this.setState({
                 loading: false,
             })
@@ -33,7 +33,6 @@ class carouselItem extends React.Component {
                 let movies_list = await response.json();
                 let movies = [[...this.state.movies], [movies_list.Search]].flat();
                 this.setState({
-                    loading: false,
                     movies: movies,
                 })
             }
