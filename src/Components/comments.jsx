@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Row, Col, Image, Form, Button, ToggleButtonGroup, ToggleButton, Spinner } from 'react-bootstrap';
 import CommentsList from './CommentsList';
+import "./Comments.css"
 
 
 class Comments extends React.Component {
@@ -18,7 +19,6 @@ class Comments extends React.Component {
 
     addComment = async (event) => {
         event.preventDefault()
-        const { book } = this.props;
         this.setState({ loading: true })
         const { review } = this.state;
         try {
@@ -32,7 +32,8 @@ class Comments extends React.Component {
                     })
                 })
             if (response.ok) {
-                // alert('Comment sent!')
+                alert('Comment sent!')
+                console.log(review)
                 this.setState({
                     review: {
                         comment: '',
@@ -43,6 +44,7 @@ class Comments extends React.Component {
                     loading: false,
                     refreshList: true,
                 })
+                this.componentDidUpdate()
             } else {
                 console.log('an error occurred')
                 let error = await response.json()
@@ -64,7 +66,7 @@ class Comments extends React.Component {
     commentSection = () => {
         const { rate, comment } = this.state;
         return (
-            <Form onSubmit={this.addComment} className="col col-12 m-0">
+            <Form onSubmit={this.addComment} className="col col-12 m-0 ">
                 <h4>Your Review</h4>
                 <Col>
                     <Form.Group >
@@ -96,7 +98,7 @@ class Comments extends React.Component {
                         </Col>
                     </Row>
                 </Col>
-                <Button type="submit" variant="outline-primary">Submit</Button>
+                <Button type="submit" variant="primary">Submit</Button>
             </Form>
         );
     }
@@ -106,33 +108,30 @@ class Comments extends React.Component {
         this.setState({ review });
     };
     updateReviewField = (event) => {
-        const { book } = this.props;
+        const { id } = this.props;
         const review = { ...this.state.review }
         const name = event.currentTarget.name;
-        review.elementId = book.asin;
+        review.elementId = id;
         review[name] = event.currentTarget.value
         this.setState({ review });
-        console.log(this.state.review)
+        console.log(id)
     }
 
     render() {
-        const { book, onHide, show } = this.props;
+        const { id, onHide, show } = this.props;
 
 
         return (
             <Container
                 size="lg"
-                aria-labelledby="bookComments"
+                aria-labelledby="movieComments"
             >
-                <div key={book.asin} onClick={onHide}>
-                    <h2 id="bookComments">
-                        {book.title}
-                    </h2>
+                <div key={id} onClick={onHide}>
+
                     <div>
 
                         <Row>
-                            <Image src={book.img} rounded fluid />
-                            <Row className="m-1">
+                            <Col className="m-1">
                                 {this.commentSection()}
                                 {
                                     this.state.loading && (
@@ -144,13 +143,13 @@ class Comments extends React.Component {
                                         </div>
                                     )
                                 }
-                            </Row>
+                            </Col>
 
-                            <Row>
-                                <Col>
-                                    <CommentsList id={book.asin} refreshList={this.state.refreshList} />
-                                </Col>
-                            </Row>
+
+                            <Col>
+                                <CommentsList id={id} refreshList={this.state.refreshList} />
+                            </Col>
+
 
                         </Row>
                     </div>
@@ -161,8 +160,7 @@ class Comments extends React.Component {
 }
 
 
-Comments.propTypes = { book: PropTypes.object.isRequired, onHide: PropTypes.func, show: PropTypes.bool };
-Comments.defaultProps = { book: undefined };
+Comments.propTypes = { id: PropTypes.string, onHide: PropTypes.func, show: PropTypes.bool };
 
 
 export default Comments;

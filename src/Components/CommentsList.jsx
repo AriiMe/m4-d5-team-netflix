@@ -77,10 +77,9 @@ class CommentsList extends React.Component {
     renderComments = () => {
         if (this.state.status === true) {
             const { reviews, loading } = this.state;
-            return (reviews && <Card border="warning" className="m-0 p-0">
+            return (reviews && <Card className="m-0 p-0 card-dark">
                 <Card.Header>Reviews</Card.Header>
-                {reviews.map((review) => this.reviewItem(review))}
-
+                <Card.Body>{reviews.map((review) => this.reviewItem(review))}</Card.Body>
             </Card>)
         }
     }

@@ -32,7 +32,8 @@ class ShowDetail extends React.Component {
 
     render() {
         const { movie } = this.state;
-        console.log(movie)
+        const { id } = this.props.match.params;
+        console.log(id)
         return <>
             <Jumbotron fluid className="text-white" style={{ width: "100%", height: "90vh", position: "relative", backgroundImage: 'url(' + movie.Poster + ')', backgroundPosition: "center center", backgroundSize: 'cover' }}>
                 <Container style={{ width: "100%", height: "100%", marginTop: "10vh" }}>
@@ -60,7 +61,7 @@ class ShowDetail extends React.Component {
                 </Container>
             </Jumbotron >
             <Container>
-
+                <Comments id={id} />
             </Container>
 
         </>;
