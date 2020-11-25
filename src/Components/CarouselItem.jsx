@@ -16,7 +16,13 @@ class carouselItem extends React.Component {
 
     componentDidMount = () => {
         const { Title } = this.props
-        this.pages.forEach(page => this.fetchMovies(Title, page));
+        setTimeout(() => {
+            this.pages.forEach(page => this.fetchMovies(Title, page));
+            this.setState({
+                loading: false,
+            })
+        }, 1000);
+
     }
 
     fetchMovies = async (Title, page) => {
@@ -26,13 +32,10 @@ class carouselItem extends React.Component {
             if (response.ok) {
                 let movies_list = await response.json();
                 let movies = [[...this.state.movies], [movies_list.Search]].flat();
-                setTimeout(() => {
-                    this.setState({
-                        loading: false,
-                        movies: movies,
-                    })
-                }, 1000);
-
+                this.setState({
+                    loading: false,
+                    movies: movies,
+                })
             }
         } catch (e) {
             console.log("error happened, that's life", e)
