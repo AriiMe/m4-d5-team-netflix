@@ -26,7 +26,7 @@ class MovieItem extends React.Component {
     }
 }
 
-MovieItem.propTypes = { movie: propTypes.Object, history: PropTypes.string };
+MovieItem.propTypes = { movie: propTypes.Object, history: propTypes.Object };
 
 
 

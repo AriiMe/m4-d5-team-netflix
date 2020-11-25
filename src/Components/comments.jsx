@@ -1,62 +1,168 @@
-import React from 'react'
-import { ListGroup, Spinner,Col, Row } from 'react-bootstrap'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Container, Row, Col, Image, Form, Button, ToggleButtonGroup, ToggleButton, Spinner } from 'react-bootstrap';
+import CommentsList from './CommentsList';
+
 
 class Comments extends React.Component {
-
     state = {
-        comments: [],
-        loading: true
+        errMessage: '',
+        loading: false,
+        refreshList: false,
+        review: {
+            comment: '',
+            rate: "0",
+            elementId: ""
+        },
     }
 
-    // componentWillUnmount fires an instant before unmounting
-
-    //lifecycle method that is going to be triggered just once after initial loading
-    componentDidMount = async () => {
+    addComment = async (event) => {
+        event.preventDefault()
+        const { book } = this.props;
+        this.setState({ loading: true })
+        const { review } = this.state;
         try {
-            let response = await fetch("https://striveschool-api.herokuapp.com/api/comments/", {
-                headers: {
-                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI2NzAxZTk4MzViMDAwMTc1ODRlZjAiLCJpYXQiOjE2MDU3OTE3NzQsImV4cCI6MTYwNzAwMTM3NH0.-0vWsUEx5v-kF_LhWXdQJ_eFcmASdAyALwPqcgnFYe8"
-                }
+            let response = await fetch("https://striveschool-api.herokuapp.com/api/comments/",
+                {
+                    method: 'POST',
+                    body: JSON.stringify(review),
+                    headers: new Headers({
+                        "Content-Type": "application/json",
+                        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI2OTE2Mjk4MzViMDAwMTc1ODRmNTkiLCJpYXQiOjE2MDU4MDAyOTAsImV4cCI6MTYwNzAwOTg5MH0.EDD_ZH6yNBd1WStOkn3RPWNiO1Cm44mhsuhN43Auc2U",
+                    })
                 })
-            let comments = await response.json()
-            this.setState({ comments: comments, loading: false })
+            if (response.ok) {
+                // alert('Comment sent!')
+                this.setState({
+                    review: {
+                        comment: '',
+                        rate: "0",
+                        elementId: ""
+                    },
+                    errMessage: '',
+                    loading: false,
+                    refreshList: true,
+                })
+            } else {
+                console.log('an error occurred')
+                let error = await response.json()
+                this.setState({
+                    errMessage: error.message,
+                    loading: false,
+                })
+            }
         } catch (e) {
-            console.log("error happened, that's life", e)
-            this.setState({ loading: false })
+            console.log(e) // Error
+            alert(e)
+            this.setState({
+                errMessage: e.message,
+                loading: false,
+            })
         }
     }
 
+    commentSection = () => {
+        const { rate, comment } = this.state;
+        return (
+            <Form onSubmit={this.addComment} className="col col-12 m-0">
+                <h4>Your Review</h4>
+                <Col>
+                    <Form.Group >
+                        <Form.Label htmlFor="comment">Comment:</Form.Label>
+                        <Form.Control
+                            className="col col-12 m-0"
+                            as="textarea"
+                            rows="3"
+                            name="comment"
+                            placeholder="Write your comment..."
+                            value={comment}
+                            onChange={this.updateReviewField}
+                            required
+                        />
+                    </Form.Group>
+                </Col>
+                <Col>
+                    <Row>
+                        <Col>
+                            <Form.Group id="rate" className="d-flex">
+                                <ToggleButtonGroup type="checkbox" name="rate" value={rate} onChange={this.handelRate}>
+                                    <ToggleButton variant="outline-warning font-weight-bold" value={1}>☆</ToggleButton>
+                                    <ToggleButton variant="outline-warning font-weight-bold" value={2}>☆</ToggleButton>
+                                    <ToggleButton variant="outline-warning font-weight-bold" value={3}>☆</ToggleButton>
+                                    <ToggleButton variant="outline-warning font-weight-bold" value={4}>☆</ToggleButton>
+                                    <ToggleButton variant="outline-warning font-weight-bold" value={5}>☆</ToggleButton>
+                                </ToggleButtonGroup>
+                            </Form.Group>
+                        </Col>
+                    </Row>
+                </Col>
+                <Button type="submit" variant="outline-primary">Submit</Button>
+            </Form>
+        );
+    }
+    handelRate = (val) => {
+        const review = { ...this.state.review };
+        review.rate = val.length.toString();
+        this.setState({ review });
+    };
+    updateReviewField = (event) => {
+        const { book } = this.props;
+        const review = { ...this.state.review }
+        const name = event.currentTarget.name;
+        review.elementId = book.asin;
+        review[name] = event.currentTarget.value
+        this.setState({ review });
+        console.log(this.state.review)
+    }
 
     render() {
+        const { book, onHide, show } = this.props;
 
-        console.log('IN THE RENDER METHOD')
 
         return (
-            <div className="mb-5">
-                <h2>Comments</h2>
-                {
-                    this.state.loading && (
-                        <div className="font-bold d-flex justify-content-center">
-                            <span>Feching comments</span>
-                            <Spinner animation="border" variant="success" />
-                        </div>
-                    )
-                }
-                {this.state.comments.map((comments, index) => (
-                    <ListGroup className="yeet" key={index}>
-                        <ListGroup.Item>
-                            <Row>
-                                <Col sm={2}>
-                            Name: {comments.author}, Message: {comments.comment},
-                            at {comments.updatedAt}
-                            </Col>
+            <Container
+                size="lg"
+                aria-labelledby="bookComments"
+            >
+                <div key={book.asin} onClick={onHide}>
+                    <h2 id="bookComments">
+                        {book.title}
+                    </h2>
+                    <div>
+
+                        <Row>
+                            <Image src={book.img} rounded fluid />
+                            <Row className="m-1">
+                                {this.commentSection()}
+                                {
+                                    this.state.loading && (
+                                        <div className="d-flex justify-content-center my-5">
+                                            Saving comment, please wait
+                                            <div className="ml-2">
+                                                <Spinner animation="border" variant="success" />
+                                            </div>
+                                        </div>
+                                    )
+                                }
                             </Row>
-                        </ListGroup.Item>
-                    </ListGroup>
-                ))}
-            </div>
-        )
+
+                            <Row>
+                                <Col>
+                                    <CommentsList id={book.asin} refreshList={this.state.refreshList} />
+                                </Col>
+                            </Row>
+
+                        </Row>
+                    </div>
+                </div>
+            </Container>
+        );
     }
 }
 
-export default Comments
+
+Comments.propTypes = { book: PropTypes.object.isRequired, onHide: PropTypes.func, show: PropTypes.bool };
+Comments.defaultProps = { book: undefined };
+
+
+export default Comments;

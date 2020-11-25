@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Row, Col, Image, Jumbotron } from 'react-bootstrap';
+import { Container, Row, Col, Image, Jumbotron, Badge } from 'react-bootstrap';
 import Comments from './Comments';
 
 
@@ -34,43 +34,35 @@ class ShowDetail extends React.Component {
         const { movie } = this.state;
         console.log(movie)
         return <>
-            <Jumbotron fluid className="text-white" style={{ width: "100%", height: "100vh", position: "relative", backgroundImage: 'url(' + movie.Poster + ')', backgroundRepeat: 'no-repeat', backgroundPosition: 'center center', backgroundSize: 'cover' }}>
+            <Jumbotron fluid className="text-white" style={{ width: "100%", height: "90vh", position: "relative", backgroundImage: 'url(' + movie.Poster + ')', backgroundPosition: "center center", backgroundSize: 'cover' }}>
                 <Container style={{ width: "100%", height: "100%", marginTop: "10vh" }}>
                     <div>
                         <Image src="https://image.flaticon.com/icons/png/512/870/870910.png" height="40px" /><span className="text-uppercase font-weight-bold">{movie.Type}</span>
                     </div>
 
-                    <div>
+                    <Col lg={5} md={6}>
                         <h1>{movie.Title}</h1>
-                        <small> {movie.Year} {movie.Rated} {movie.Released}</small>
-                    </div>
+                        <Row className="justify-content-around mr-5">
+                            <small className="text-success">{movie.Metascore}% Match</small>
+                            <small className="text-muted">{movie.Type}</small>
+                            <small className="text-muted">{movie.Year}</small>
+                            <Badge variant="dark">{movie.Rated}</Badge>
+                            <Badge variant="dark">HD</Badge>
+                            <Badge variant="secondary">{movie.imdbRating}</Badge>
+                        </Row>
+                        <Row>
+
+                            <div className="plot mt-4">
+                                <p>{movie.Plot}</p>
+                            </div>
+                        </Row>
+                    </Col>
                 </Container>
             </Jumbotron >
             <Container>
 
-
-
-                <Row className="text-white">
-
-                    <div >
-                        <h2>{movie.Title} <span>({movie.Year})</span></h2>
-
-
-                        <p className="rating">Rating: {movie.imdbRating}</p>
-                        <div className="plot">
-
-                            <p>{movie.Plot}</p>
-                        </div>
-
-                    </div>
-                    <div className="comments container">
-                        <Container>
-
-                        </Container>
-                    </div>
-
-                </Row>
             </Container>
+
         </>;
     }
 }

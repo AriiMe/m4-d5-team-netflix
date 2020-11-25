@@ -52,7 +52,7 @@ class Main extends React.Component {
                     {this.movie_keys.map((movie) => <CarouselItem key={movie} Title={movie} history={history} ></CarouselItem>)}
                 </>
             ) : (<Container>
-                <Results results={movies} openPopup={this.openPopup} />
+                <Results results={movies} openPopup={this.openPopup} history={history} />
             </Container>)
             }
 
