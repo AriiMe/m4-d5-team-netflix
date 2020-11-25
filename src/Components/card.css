@@ -26,11 +26,10 @@ select {
   border-radius: 2px;
 }
 .img-fluid {
-  min-width: 100%;
+  width: 300px;
   height: inherit;
   transition: all ease 0.15s;
 }
-
 .img-fluid:hover,
 .img-fluid:hover ~ .details {
   transition: all ease 0.15s;
