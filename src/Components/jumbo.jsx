@@ -31,7 +31,11 @@ class Jumbo extends React.Component {
             autoPlay
             muted
             loop
-            style={{ position: "relative", width: "100%" }}
+            style={{
+              position: "relative",
+              width: "100%",
+              marginBottom: "30vh",
+            }}
           ></video>
         </div>
 
