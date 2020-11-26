@@ -13,19 +13,22 @@ class Jumbo extends React.Component {
         id="jumbotron"
         style={{ width: "100%", height: "100vh", position: "relative" }}
       >
-        <embed
-          type="image/svg+xml"
-          className="jumbotron"
-          src="https://tv.giphy.com/?username=hulu"
-          style={{
-            position: "absolute",
-            top: "0",
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            opacity: "0.5",
-          }}
-        />
+        <div>
+          <video loop autoplay muted>
+            <source
+              src={"./assets/jumbovid.mp4"}
+              type="video/mp4"
+              style={{
+                position: "absolute",
+                top: "0",
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                opacity: "0.5",
+              }}
+            />
+          </video>
+        </div>
         <div
           className="gradientOnJumbo"
           style={{
