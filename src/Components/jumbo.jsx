@@ -34,7 +34,7 @@ class Jumbo extends React.Component {
             style={{
               position: "relative",
               width: "100%",
-              marginBottom: "30vh",
+              marginBottom: "25vh",
             }}
           ></video>
         </div>
