@@ -2,27 +2,38 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Row, Col, Image, Jumbotron, Badge } from 'react-bootstrap';
 import Comments from './Comments';
+import Results from './Results'
+import RelatedMovies from './RelatedMovies'
 
 
 class ShowDetail extends React.Component {
     state = {
-        movie: {}
+        movie: {},
+        loaded: false,
     }
-    url = "http://www.omdbapi.com/?apikey=ff133ca5&i="
-    componentDidMount() {
-        let movie_id = this.props.match.params.id;
-        this.fetchMovie(movie_id)
+    url = "http://www.omdbapi.com/?apikey=ff133ca5&"
+    load = () => {
+        let movie_id = "i=" + this.props.match.params.id;
+        this.fetchMovie(movie_id, 0)
     }
-
-
-    fetchMovie = async (id) => {
+    constructor(props) {
+        super(props)
+        this.load();
+    }
+    related = () => {
+        const { movie, loaded } = this.state
+        const { history } = this.props
+        if (loaded === true) {
+            return <>{movie.Type === 'movie' ? <RelatedMovies history={history} Type='0' Id={movie.Title} /> : <RelatedMovies history={history} Type='1' Id={movie.imdbID} />}</>
+        }
+    }
+    fetchMovie = async (id, type) => {
         try {
             let response = await fetch(this.url + id);
 
             if (response.ok) {
-                let movies_list = await response.json();
-                this.setState({ movie: movies_list })
-                return (movies_list)
+                let movie = await response.json();
+                return type === 0 ? this.setState({ movie, loaded: true }) : movie.Search;
             }
         } catch (e) {
             console.log("error happened, that's life", e)
@@ -60,10 +71,14 @@ class ShowDetail extends React.Component {
                 </Container>
             </Jumbotron >
             <Container>
-                <Col md="8">
 
+                <Col>
+                    <Comments id={id} />
                 </Col>
-                <Col md="4"><Comments id={id} /></Col>
+                <Row id="related">
+                    <h2 className="text-white-50">Related</h2>
+                    {this.related()}
+                </Row>
 
             </Container>
 
@@ -71,7 +86,7 @@ class ShowDetail extends React.Component {
     }
 }
 
-ShowDetail.propTypes = { id: PropTypes.string.isRequired };
+ShowDetail.propTypes = { id: PropTypes.string };
 
 // #endregion
 

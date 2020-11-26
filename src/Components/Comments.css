@@ -11,6 +11,10 @@ form,
 .card-body {
   padding: 0;
 }
+.card {
+  overflow-y: scroll;
+  height: 50vh;
+}
 .btn-outline-warning {
   border: none;
   border-radius: 100%;

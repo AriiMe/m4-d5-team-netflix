@@ -32,7 +32,6 @@ class CommentsList extends React.Component {
                 let reviews = await response.json();
                 this.book_review = reviews;
                 this.setState({ reviews: reviews, loading: false, status: true })
-                console.log(this.state)
             }
         } catch (e) {
             console.log("error happened, that's life", e)
@@ -127,12 +126,11 @@ class CommentsList extends React.Component {
             {this.renderComments()}
             {
                 this.state.loading && (
-                    <div className="d-flex justify-content-center my-5">
-                        Deleting Comment, please wait...
-                        <div className="ml-2">
-                            <Spinner animation="border" variant="success" />
-                        </div>
+
+                    <div className="ml-2 d-flex justify-content-center my-5">
+                        <Spinner animation="border" variant="success" />
                     </div>
+
                 )
             }
         </>

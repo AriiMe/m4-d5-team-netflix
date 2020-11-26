@@ -2,7 +2,6 @@ import React from 'react'
 import MovieItem from './MovieItem'
 
 function Results({ results, openPopup, history }) {
-	console.log(results)
 	return (
 		<section className="results justify-content-center" >
 			{results.map((movie, i) => (

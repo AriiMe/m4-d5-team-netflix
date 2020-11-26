@@ -127,7 +127,7 @@ class Comments extends React.Component {
             >
                 <div key={id} onClick={onHide}>
 
-                    <div>
+                    <Row>
 
 
                         <Col className="m-1">
@@ -151,7 +151,7 @@ class Comments extends React.Component {
 
 
 
-                    </div>
+                    </Row>
                 </div>
             </Container>
         );

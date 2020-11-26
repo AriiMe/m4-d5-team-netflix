@@ -1,0 +1,7 @@
+#related section div .img-fluid {
+  max-height: 200px;
+  min-width: 200px;
+}
+#related section div .img-fluid ~ div {
+  min-width: 200px;
+}
