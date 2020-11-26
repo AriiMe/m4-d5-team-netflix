@@ -113,7 +113,7 @@ section {
   background-color: black;
   padding: 0px;
 }
-.jumbotron video {
+.jumbotron embed {
   position: absolute;
   top: 0;
   width: 100%;
