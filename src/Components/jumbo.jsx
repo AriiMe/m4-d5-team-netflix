@@ -3,6 +3,8 @@
 import React from "react";
 import { Jumbotron, Container, Image } from "react-bootstrap";
 import "../App.css";
+import Jumbovid from "../assets/Jumbovid.mp4";
+import ReactPlayer from "react-player/youtube";
 
 class Jumbo extends React.Component {
   render() {
@@ -13,22 +15,26 @@ class Jumbo extends React.Component {
         id="jumbotron"
         style={{ width: "100%", height: "100vh", position: "relative" }}
       >
-        <div>
-          <video loop autoplay muted>
-            <source
-              src={"./assets/jumbovid.mp4"}
-              type="video/mp4"
-              style={{
-                position: "absolute",
-                top: "0",
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                opacity: "0.5",
-              }}
-            />
-          </video>
+        <div
+          className="d-flex align-items-center justify-content-center"
+          style={{
+            position: "relative",
+
+            width: "100%",
+            height: "120vh",
+            zIndex: "0",
+            overflow: "hidden",
+          }}
+        >
+          <video
+            src={Jumbovid}
+            autoPlay
+            muted
+            loop
+            style={{ position: "relative", width: "100%" }}
+          ></video>
         </div>
+
         <div
           className="gradientOnJumbo"
           style={{
@@ -41,7 +47,7 @@ class Jumbo extends React.Component {
             bottom: "0",
             left: "0",
             right: "0",
-            zIndex: 1,
+            zIndex: "3",
           }}
         ></div>
       </Jumbotron>
